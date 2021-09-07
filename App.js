@@ -8,7 +8,7 @@ function App() {
   const express = require('express')
   const server = express()
   // const {calory,searchCalory} = useState('')
-  const API_KEY = '1STbT8Zsp6d9CcLirJjDRE9UoS6aklojen8h5que';
+  const API_KEY = '';
   const url = "https://api.nal.usda.gov/fdc/v1/food/11090?api_key=" + API_KEY;
   
   const getCalories  = () => {
