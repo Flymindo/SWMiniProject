@@ -1,23 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {Auth} from '../service';
 
-// export default Login = ({navigation}) => {
-//     return(
-//         <View style = {styles.login}>
-//             <TouchableOpacity onPress = { () => navigation.navigate('Home')}>
-//                 <Text>Login</Text>
-//             </TouchableOpacity>  
 
-//             <Text> Login </Text>
-//         </View>
-//     )
-// }
 const Login = ({navigation}) => {
     return(
         <View style = {styles.login}>
-            <TouchableOpacity onPress = { () => navigation.navigate('Home')}>
+            {/* <TouchableOpacity onPress = { () => navigation.navigate('Home')}>
                 <Text>Login</Text>
-            </TouchableOpacity>  
+            </TouchableOpacity>   */}
+            <Button 
+            title="Google Sign-In"
+            onPress={() => Auth.googleLogin().then(() => console.log('Signed in with Google!'))}
+            />
 
         </View>
     )

@@ -5,9 +5,10 @@ const Home = ({navigation}) => {
     return(
         <View style = {styles.home}>
             <Text> Home </Text>
-            <TouchableOpacity onPress = { () => navigation.navigate('Login')}>
-                <Text>Go Back to Login</Text>
-            </TouchableOpacity>
+            {/* <TouchableOpacity onPress = { () => navigation.navigate('Recipe')}>
+                <Text>Your Recipes</Text>
+            </TouchableOpacity> */}
+            <Text>Your Recipes</Text>
             <TouchableOpacity onPress = { () => navigation.navigate('Recipes')}>
                 <Text>Your Recipes</Text>
             </TouchableOpacity>    
