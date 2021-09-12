@@ -4,14 +4,13 @@ import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 const Home = ({navigation}) => {
     return(
         <View style = {styles.home}>
-            <Text> Home </Text>
-            {/* <TouchableOpacity onPress = { () => navigation.navigate('Recipe')}>
-                <Text>Your Recipes</Text>
-            </TouchableOpacity> */}
-            <Text>Your Recipes</Text>
+            {/* <Text>Your Recipes</Text> */}
             <TouchableOpacity onPress = { () => navigation.navigate('Recipes')}>
                 <Text>Your Recipes</Text>
-            </TouchableOpacity>    
+            </TouchableOpacity>
+            <TouchableOpacity onPress = { () => navigation.navigate('Scan')}>
+                <Text>Scan Barcode</Text>
+            </TouchableOpacity>      
         </View>
     )
 }

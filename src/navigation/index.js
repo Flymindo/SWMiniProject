@@ -1,7 +1,6 @@
 
 
 import React, {useState, useEffect} from 'react';
-import { View, Text } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
@@ -25,12 +24,12 @@ const AppContainer =  () =>  {
   
     useEffect(() => {
     GoogleSignin.configure({
-        webClientId: '430919947523-a0n728lncsufgnehk1a77umo2v0438dp.apps.googleusercontent.com'
+        webClientId: '756717195653-pb7k5q0tnhppppsj2mf5kd7odojrm6u5.apps.googleusercontent.com'
         });
       const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
       return subscriber; // unsubscribe on unmount
 
-    
+     
     }, []);
   
     if (initializing) return null;
@@ -39,6 +38,7 @@ const AppContainer =  () =>  {
     return (
       <NavigationContainer>
           {user ? <AppNavigator/> : <AuthNavigator/>}
+          {/* <AppNavigator/> */}
       </NavigationContainer>
     );
 
