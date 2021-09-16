@@ -10,28 +10,43 @@ const addRecipes = (recipeName) =>{
     });
 }
 
-const getRecipesList = async() => {
-
-    var recipeList = [];
-    await usersCollection.get().then(querySnapshot => {
-        // console.log('Total users: ', querySnapshot.size);
-    
-        querySnapshot.forEach(documentSnapshot => {
-        //   console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-          recipeList.push({
-              Name: documentSnapshot.id,
-              TotalCalory: documentSnapshot.data().TotalCalory
-          })
-        //   console.log(recipeList)
-        });
-      });
-    
-    return recipeList;
+const addFoods = (recipeName, foodName, calory) =>{
+    usersCollection.doc(recipeName).collection('Foods').doc(foodName).set({
+        Name: foodName,
+        Calory: calory
+    });
 }
+
+const addTotalCalory = (recipeName, totalCalory, calory) =>{
+    total = totalCalory + calory;
+    usersCollection.doc(recipeName).update({
+        TotalCalory: total
+    })
+}
+
+const subtractTotalCalory = (recipeName, totalCalory, calory) =>{
+    total = totalCalory - calory;
+    usersCollection.doc(recipeName).update({
+        TotalCalory: total
+    })
+}
+
+const deleteRecipe = (recipeName) =>{
+    usersCollection.doc(recipeName).delete();
+}
+
+const deleteFood = (recipeName,foodName) =>{
+    usersCollection.doc(recipeName).collection('Foods').doc(foodName).delete();
+}
+
 
 const Storage = {
     addRecipes,
-    getRecipesList
+    addFoods,
+    addTotalCalory,
+    subtractTotalCalory,
+    deleteFood,
+    deleteRecipe
 }
 
 export default Storage;

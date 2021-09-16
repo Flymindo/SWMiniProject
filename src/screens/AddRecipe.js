@@ -20,7 +20,6 @@ const AddRecipe = ({navigation}) => {
                 Storage.addRecipes(recipeName);
                 Alert.alert("Succefully Added");
                 navigation.goBack();
-                Storage.getRecipesList();
 
             }}
             />  
