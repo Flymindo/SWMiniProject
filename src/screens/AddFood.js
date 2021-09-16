@@ -6,7 +6,6 @@ import { TextInput } from 'react-native-gesture-handler';
 
 
 
-
 class AddFood extends Component {
     constructor(props) {
         super(props);
