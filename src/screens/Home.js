@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import { Auth } from '../service';
 
 const Home = ({navigation}) => {
     return(
@@ -11,6 +12,8 @@ const Home = ({navigation}) => {
             <TouchableOpacity onPress = { () => navigation.navigate('Scan')}>
                 <Text>Scan Barcode</Text>
             </TouchableOpacity>      
+            <Button title= 'Sign out' onPress = { () => Auth.signOut()}/>
+
         </View>
     )
 }

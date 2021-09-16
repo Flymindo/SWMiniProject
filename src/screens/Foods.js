@@ -2,21 +2,19 @@ import React, {Component, useState,useEffect} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList,SafeAreaView, Button} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-class Recipes extends Component {
+class Foods extends Component {
     state = {
-        recipes: []
+        foods: []
     }
     constructor(props) {
         super(props);
+        this.parentName = this.props.route.params.recipeName;
         this.data = 
         firestore()
         .collection('Recipes')
-        .onSnapshot(querySnapshot => {
-            let recipes = [];
-            querySnapshot.forEach(documentSnapshot => {
-              recipes.push( documentSnapshot.data() )
-            })
-            this.setState({recipes});
+        .doc(this.parentName)
+        .onSnapshot(documentSnapshot => {
+            console.log(documentSnapshot.data())
       })
     }
     
@@ -24,15 +22,14 @@ class Recipes extends Component {
         
         return(
         <View style = {styles.home}>
-            {this.state.recipes.map( (recipe, index) => 
+            {this.state.foods.map( (food, index) => 
             <View key={index}> 
-                <TouchableOpacity onPress = { () => this.props.navigation.navigate("Foods",{
-                    recipeName: recipe.Name
-                })} >
-                    <Text>{recipe.Name}</Text> 
+                <TouchableOpacity >
+                    <Text>{this.props.route.recipeName}</Text> 
                 </TouchableOpacity>
             </View>
             )}
+            <Text> {this.props.route.params.recipeName} </Text>
             <Button title= "Add a recipe" onPress = { () => this.props.navigation.navigate("AddRecipe")}/>
         </View>
         )}
@@ -45,4 +42,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 })
-export default Recipes;
+export default Foods

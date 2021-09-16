@@ -1,34 +1,48 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import { Alert } from 'react-native';
+import {Fetch} from '../routes';
+
+const XMLHttpRequest = require("xhr2");
+
 
 class Scan extends Component {
 
   constructor(props) {
     super(props);
     this.camera = null;
-    this.barcodeCodes = [];
+    // this.barcodeCodes = [];
+    this.barcodeCode = "";
 
     this.state = {
       camera: {
         type: RNCamera.Constants.Type.back,
-	flashMode: RNCamera.Constants.FlashMode.auto,
-      }
+	 flashMode: RNCamera.Constants.FlashMode.auto,
+      },
     };
   }
 
+  
+
   onBarCodeRead(scanResult) {
-    // console.warn(scanResult.type);
-    // console.warn(scanResult.data);
+
     if (scanResult.data != null) {
-	if (!this.barcodeCodes.includes(scanResult.data)) {
-	  this.barcodeCodes.push(scanResult.data);
-      console.log(this.barcodeCodes)
-	//   console.warn('onBarCodeRead call');
-	}
+
+      if (this.barcodeCode != scanResult.data) {
+        this.barcodeCode = scanResult.data;
+
+        console.log("this is barcodeCode")
+        console.log(this.barcodeCode)
+        Alert.alert('The barcode is scanned. Please press the button "Enter Barcode');
+
+        
+        
+      }
     }
     return;
   }
+
 
   async takePicture() {
     if (this.camera) {
@@ -75,9 +89,11 @@ class Scan extends Component {
 	<View style={[styles.overlay, styles.bottomOverlay]}>
           <Button
             onPress={() => {
-                console.log('scan clicked');
-                //insert getData() function from routes/getNutrients.js
-                }}
+              
+              this.props.navigation.navigate('AddFood',{
+                barcode : this.barcodeCode
+              });
+              }}
             style={styles.enterBarcodeManualButton}
             title="Enter Barcode"
            />
