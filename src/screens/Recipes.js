@@ -9,7 +9,18 @@ class Recipes extends Component {
     }
     constructor(props) {
         super(props);
-        this.data = 
+    //     this.data = 
+    //     firestore()
+    //     .collection('Recipes')
+    //     .onSnapshot(querySnapshot => {
+    //         let recipes = [];
+    //         querySnapshot.forEach(documentSnapshot => {
+    //           recipes.push( documentSnapshot.data() )
+    //         })
+    //         this.setState({recipes});
+    //   })
+    }
+    componentDidMount(){
         firestore()
         .collection('Recipes')
         .onSnapshot(querySnapshot => {

@@ -12,7 +12,21 @@ class Foods extends Component {
         super(props);
         this.parentName = this.props.route.params.recipeName;
         this.recipeTotalCalory = this.props.route.params.totalCalory;
-        this.data = 
+    //     this.data = 
+    //     firestore()
+    //     .collection('Recipes')
+    //     .doc(this.parentName)
+    //     .collection('Foods')
+    //     .onSnapshot(querySnapshot => {
+    //         let foods = [];
+    //         querySnapshot.forEach(documentSnapshot => {
+    //           foods.push( documentSnapshot.data() )
+    //         })
+    //         this.setState({foods});
+    //   })
+    }
+
+    componentDidMount(){
         firestore()
         .collection('Recipes')
         .doc(this.parentName)
