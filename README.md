@@ -1,4 +1,4 @@
-# Extension of the school project (SWMiniProject)
+# SWMiniProject
 
 The app allows users to determine total amount of calories in recipes. The app automatically calculates total amount of calories of recipes 
 as a user adds foods to recipies by Scanning barcode of the food. 
